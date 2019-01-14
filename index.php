@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $sorter = new \TripSorter\AppSorter();
 $cardsList = new TripSorter\CardsList\InputCardsList();
@@ -26,4 +26,4 @@ $trip3->setSeat('J51');
 $cardsList->addCard($trip3);
 
 $result = $sorter->sort($cardsList);
-echo json_encode($result->getCards());
+echo $result->renderHtml();

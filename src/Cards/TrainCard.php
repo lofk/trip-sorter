@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
 
 final class TrainCard extends BoardingCard
 {
-    /** @var  string */
+    /**
+     * @var  string
+     */
     protected $seat;
 
     /**
@@ -22,5 +25,10 @@ final class TrainCard extends BoardingCard
     public function setSeat($seat)
     {
         $this->seat = $seat;
+    }
+
+    public function getDescription() : string
+    {
+        return "Take train {$this->getRefNumber()} from {$this->getDeparture()} to {$this->getArrival()}. Sit in seat {$this->getSeat()}.";
     }
 }

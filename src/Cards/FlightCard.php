@@ -1,20 +1,30 @@
 <?php
+declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
 
 final class FlightCard extends BoardingCard
 {
-    /** @var  string */
+    /**
+     * @var  string
+     */
     protected $gate;
 
-    /** @var  string */
+    /**
+     * @var  string
+     */
     protected $seat;
+
+    /**
+     * @var  FlightBaggage
+     */
+    protected $baggage;
 
     /**
      * @return string
      */
-    public function getGate()
+    public function getGate() : string
     {
         return $this->gate;
     }
@@ -22,7 +32,7 @@ final class FlightCard extends BoardingCard
     /**
      * @param string $gate
      */
-    public function setGate($gate)
+    public function setGate($gate) : void
     {
         $this->gate = $gate;
     }
@@ -30,7 +40,7 @@ final class FlightCard extends BoardingCard
     /**
      * @return string
      */
-    public function getSeat()
+    public function getSeat() : string
     {
         return $this->seat;
     }
@@ -38,8 +48,16 @@ final class FlightCard extends BoardingCard
     /**
      * @param string $seat
      */
-    public function setSeat($seat)
+    public function setSeat($seat) : void
     {
         $this->seat = $seat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription() : string
+    {
+        return "From {$this->getDeparture()}, take flight {$this->getRefNumber()} to {$this->getArrival()}. Gate {$this->getGate()}, seat {$this->getSeat()}.";
     }
 }

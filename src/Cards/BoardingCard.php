@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace TripSorter\Cards;
 
 
-abstract class BoardingCard
+abstract class BoardingCard implements CardInterface
 {
     /**
      * @var string
@@ -24,7 +24,7 @@ abstract class BoardingCard
     /**
      * @return string
      */
-    public function getRefNumber()
+    public function getRefNumber() : string
     {
         return $this->refNumber;
     }
@@ -32,7 +32,7 @@ abstract class BoardingCard
     /**
      * @param string $refNumber
      */
-    public function setRefNumber($refNumber)
+    public function setRefNumber(string $refNumber) : void
     {
         $this->refNumber = $refNumber;
     }
@@ -40,7 +40,7 @@ abstract class BoardingCard
     /**
      * @return string
      */
-    public function getDeparture()
+    public function getDeparture() : string
     {
         return $this->departure;
     }
@@ -48,7 +48,7 @@ abstract class BoardingCard
     /**
      * @param string $departure
      */
-    public function setDeparture($departure)
+    public function setDeparture(string $departure) : void
     {
         $this->departure = $departure;
     }
@@ -56,7 +56,7 @@ abstract class BoardingCard
     /**
      * @return string
      */
-    public function getArrival()
+    public function getArrival() : string
     {
         return $this->arrival;
     }
@@ -64,8 +64,13 @@ abstract class BoardingCard
     /**
      * @param string $arrival
      */
-    public function setArrival($arrival)
+    public function setArrival(string $arrival) : void
     {
         $this->arrival = $arrival;
     }
+
+    /**
+     * @return string
+     */
+    abstract public function getDescription() : string;
 }
