@@ -1,10 +1,13 @@
 <?php
 declare(strict_types=1);
 
+namespace TripSorter\Tests;
+
 use PHPUnit\Framework\TestCase;
 use TripSorter\AppSorter;
+use TripSorter\CardsList\CardsListInterface;
 use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
-use TripSorter\CardsList\{CardsListInterface, InputCardsList, ResultCardsList};
+use TripSorter\CardsList\{InputCardsList, ResultCardsList};
 
 final class AppSorterTest extends TestCase
 {
@@ -24,12 +27,12 @@ final class AppSorterTest extends TestCase
     public function cardsProvider() : array
     {
         return [
-            $this->case1(),
-            $this->case2()
+            $this->listWith3Trips(),
+            $this->listWith5Trips()
         ];
     }
 
-    private function case1() : array
+    private function listWith3Trips() : array
     {
         $trip1 = new BusCard();
         $trip1->setRefNumber('testbus1');
@@ -50,14 +53,10 @@ final class AppSorterTest extends TestCase
         $trip3->setSeat('0213');
 
         $list = new InputCardsList();
-        $list->addCard($trip1);
-        $list->addCard($trip2);
-        $list->addCard($trip3);
+        $list->setCards([$trip1, $trip2, $trip3]);
 
         $expectedList = new ResultCardsList();
-        $expectedList->addCard($trip3);
-        $expectedList->addCard($trip1);
-        $expectedList->addCard($trip2);
+        $expectedList->setCards([$trip3, $trip1, $trip2]);
 
         return [
             $list,
@@ -65,7 +64,7 @@ final class AppSorterTest extends TestCase
         ];
     }
 
-    private function case2() : array
+    private function listWith5Trips() : array
     {
         $trip1 = new BusCard();
         $trip1->setRefNumber('ref1');
@@ -99,18 +98,10 @@ final class AppSorterTest extends TestCase
         $trip5->setSeat('222');
 
         $list = new InputCardsList();
-        $list->addCard($trip1);
-        $list->addCard($trip2);
-        $list->addCard($trip3);
-        $list->addCard($trip4);
-        $list->addCard($trip5);
+        $list->setCards([$trip1, $trip2, $trip3, $trip4, $trip5]);
 
         $expectedList = new ResultCardsList();
-        $expectedList->addCard($trip4);
-        $expectedList->addCard($trip1);
-        $expectedList->addCard($trip2);
-        $expectedList->addCard($trip5);
-        $expectedList->addCard($trip3);
+        $expectedList->setCards([$trip4, $trip1, $trip2, $trip5, $trip3]);
 
         return [
             $list,

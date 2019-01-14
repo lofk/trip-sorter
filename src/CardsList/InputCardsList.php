@@ -29,6 +29,6 @@ class InputCardsList extends CardsList
 
         //diff between the list of departures and arrivals
         //will return the start point
-        return key(array_diff($departures, $arrivals));
+        return current(array_diff($departures, $arrivals));
     }
 }
