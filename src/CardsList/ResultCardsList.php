@@ -5,10 +5,17 @@ namespace TripSorter\CardsList;
 
 use TripSorter\Cards\BoardingCard;
 
+/**
+ * Class ResultCardsList
+ * @package TripSorter\CardsList
+ */
 class ResultCardsList extends CardsList
 {
     const FINAL_MESSAGE = 'You have arrived at your final destination.';
 
+    /**
+     * @return string
+     */
     public function renderText() : string
     {
         $text = '';
@@ -21,6 +28,9 @@ class ResultCardsList extends CardsList
         return $text;
     }
 
+    /**
+     * @return string
+     */
     public function renderHtml() : string
     {
         $html = "<ul>\n";
