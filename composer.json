@@ -1,6 +1,21 @@
 {
-  "require": {},
+  "name": "lofk/trip-sorter",
+  "description": "A boarding cards sorter",
+  "authors": [
+    {
+      "name": "Karl Lof",
+      "email": "lof.karl@yahoo.fr"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
   "require-dev": {
     "phpunit/phpunit": "^7"
+  },
+  "autoload": {
+    "psr-4": {
+      "TripSorter\\": "src/"
+    }
   }
 }
