@@ -5,8 +5,9 @@ namespace TripSorter;
 
 
 use TripSorter\CardsList\CardsListInterface;
+use TripSorter\CardsList\InputCardsList;
 
 interface SorterInterface
 {
-    public function sort(CardsListInterface $cardsList) : CardsListInterface;
+    public function sort(InputCardsList $cardsList) : CardsListInterface;
 }

@@ -5,6 +5,7 @@ namespace TripSorter\CardsList;
 
 
 use TripSorter\Cards\BoardingCard;
+use TripSorter\Exception\BrokenChainException;
 
 class InputCardsList extends CardsList
 {
@@ -29,6 +30,20 @@ class InputCardsList extends CardsList
 
         //diff between the list of departures and arrivals
         //will return the start point
-        return current(array_diff($departures, $arrivals));
+        $startPoint = array_diff($departures, $arrivals);
+        if (count($startPoint) !== 1) {
+            throw new BrokenChainException();
+        }
+
+        return current($startPoint);
+    }
+
+    public function findByDeparture(string $departure) : BoardingCard
+    {
+        $card = array_filter($this->getCards(), function(BoardingCard $card) use ($departure) : bool {
+            return $card->getDeparture() === $departure;
+        });
+
+        return empty($card) ? null : current($card);
     }
 }

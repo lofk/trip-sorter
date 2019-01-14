@@ -5,13 +5,24 @@ namespace TripSorter;
 
 
 use TripSorter\CardsList\CardsListInterface;
+use TripSorter\CardsList\InputCardsList;
+use TripSorter\CardsList\ResultCardsList;
 
 final class AppSorter implements SorterInterface
 {
-    public function sort(CardsListInterface $cardsList) : CardsListInterface
+    public function sort(InputCardsList $cardsList) : CardsListInterface
     {
-        /**
-         * @todo implements sort logic
-         */
+        $startPoint = $cardsList->getStartPoint();
+        $result = new ResultCardsList();
+        $boardingCards = $cardsList->getCards();
+        for($i = 0; $i < sizeof($boardingCards); $i++) {
+            $trip = $cardsList->findByDeparture($startPoint);
+            if ($trip) {
+                $result->addCard($trip);
+                $startPoint = $trip->getArrival();
+            }
+        }
+
+        return $result;
     }
 }

@@ -8,6 +8,7 @@ use TripSorter\AppSorter;
 use TripSorter\CardsList\CardsListInterface;
 use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
 use TripSorter\CardsList\{InputCardsList, ResultCardsList};
+use TripSorter\Exception\BrokenChainException;
 
 final class AppSorterTest extends TestCase
 {
@@ -20,8 +21,19 @@ final class AppSorterTest extends TestCase
     {
         $sorter = new AppSorter();
         $result = $sorter->sort($data);
-        $this->assertInstanceOf($result, CardsListInterface::class);
-        $this->assertEquals($result->asArray(), $expected);
+        $this->assertInstanceOf(ResultCardsList::class, $result);
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * @dataProvider brokenCardsListProvider
+     * @param CardsListInterface $data
+     */
+    public function testSortException($data) : void
+    {
+        $this->expectException(BrokenChainException::class);
+        $sorter = new AppSorter();
+        $sorter->sort($data);
     }
 
     public function cardsProvider() : array
@@ -29,6 +41,13 @@ final class AppSorterTest extends TestCase
         return [
             $this->listWith3Trips(),
             $this->listWith5Trips()
+        ];
+    }
+
+    public function brokenCardsListProvider() : array
+    {
+        return [
+            $this->brokenChainList(),
         ];
     }
 
@@ -106,6 +125,34 @@ final class AppSorterTest extends TestCase
         return [
             $list,
             $expectedList
+        ];
+    }
+
+    private function brokenChainList() : array
+    {
+        $trip1 = new BusCard();
+        $trip1->setRefNumber('testbus1');
+        $trip1->setDeparture('city B');
+        $trip1->setArrival('city C');
+
+        $trip2 = new FlightCard();
+        $trip2->setRefNumber('testflight1');
+        $trip2->setDeparture('city D');
+        $trip2->setArrival('city E');
+        $trip2->setGate('GATE A');
+        $trip2->setSeat('111');
+
+        $trip3 = new TrainCard();
+        $trip3->setRefNumber('testtrain1');
+        $trip3->setDeparture('city A');
+        $trip3->setArrival('city B');
+        $trip3->setSeat('0213');
+
+        $list = new InputCardsList();
+        $list->setCards([$trip1, $trip2, $trip3]);
+
+        return [
+            $list,
         ];
     }
 }
