@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
-
+/**
+ * Interface CardInterface
+ * @package TripSorter\Cards
+ */
 interface CardInterface
 {
     /**

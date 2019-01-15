@@ -10,7 +10,7 @@ use TripSorter\Exception\BrokenChainException;
  * Class InputCardsList
  * @package TripSorter\CardsList
  */
-class InputCardsList extends CardsList
+class InputCardsList extends AbstractCardsList
 {
     /**
      * @return array

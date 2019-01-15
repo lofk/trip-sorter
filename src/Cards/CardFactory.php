@@ -7,7 +7,7 @@ namespace TripSorter\Cards;
  * Class CardFactory
  * @package TripSorter\Cards
  */
-class CardFactory
+final class CardFactory
 {
     const BUS_TYPE = 'bus';
     const TRAIN_TYPE = 'train';
@@ -30,9 +30,7 @@ class CardFactory
 
             case self::PLANE_TYPE:
                 $flightCard = new FlightCard();
-                if (isset($data['counter'])) {
-                    $flightCard->setBaggage(new FlightBaggage());
-                }
+                $flightCard->setBaggage(new FlightBaggage());
 
                 return $flightCard;
                 break;

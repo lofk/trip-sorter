@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace TripSorter;
 
-use TripSorter\CardsList\CardsListInterface;
-use TripSorter\CardsList\ResultCardsList;
+use TripSorter\CardsList\{CardsListInterface, ResultCardsList};
 
 /**
  * Class AppSorter
@@ -13,6 +12,9 @@ use TripSorter\CardsList\ResultCardsList;
 final class AppSorter implements SorterInterface
 {
     /**
+     * This method sorts any objects implementing a CardListInterface,
+     * by finding the start point, then build a ResultCardsList object with the continuous order of the cards.
+     *
      * @param CardsListInterface $cardsList
      * @return CardsListInterface
      * @throws Exception\BrokenChainException

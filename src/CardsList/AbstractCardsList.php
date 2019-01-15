@@ -6,10 +6,10 @@ namespace TripSorter\CardsList;
 use TripSorter\Cards\CardInterface;
 
 /**
- * Class CardsList
+ * Class AbstractCardsList
  * @package TripSorter\CardsList
  */
-abstract class CardsList implements CardsListInterface
+abstract class AbstractCardsList implements CardsListInterface
 {
     /**
      * @var array

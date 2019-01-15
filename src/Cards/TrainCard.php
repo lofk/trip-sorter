@@ -3,8 +3,11 @@ declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
-
-final class TrainCard extends BoardingCard
+/**
+ * Class TrainCard
+ * @package TripSorter\Cards
+ */
+final class TrainCard extends AbstractBoardingCard
 {
     /**
      * @var  string

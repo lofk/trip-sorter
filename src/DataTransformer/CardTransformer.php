@@ -26,9 +26,7 @@ class CardTransformer extends AbstractCardTransformer
         }
         if ($card instanceof FlightCard) {
             $card->setGate($data['gate'] ?? '');
-            if (isset($data['counter'])) {
-                $card->getBaggage()->setCounter($data['counter'] ?? '');
-            }
+            $card->getBaggage()->setCounter($data['counter'] ?? '');
         }
 
         return $card;

@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
-
+/**
+ * Class FlightBaggage
+ * @package TripSorter\Cards
+ */
 final class FlightBaggage
 {
     /**

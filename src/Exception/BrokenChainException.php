@@ -13,6 +13,6 @@ final class BrokenChainException extends \Exception
 
     public function __construct()
     {
-        parent::__construct(self::BROKEN_CHAIN_EXCEPTION, 0, null);
+        parent::__construct(self::BROKEN_CHAIN_EXCEPTION);
     }
 }

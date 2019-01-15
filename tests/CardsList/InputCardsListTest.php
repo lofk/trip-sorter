@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace TripSorter\Tests;
 
 use PHPUnit\Framework\TestCase;
-use TripSorter\Cards\BoardingCard;
+use TripSorter\Cards\CardInterface;
 use TripSorter\CardsList\InputCardsList;
 use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
 
@@ -47,9 +47,9 @@ final class InputCardsListTest extends TestCase
      * @dataProvider findByDepartureProvider
      * @param InputCardsList $cardsList
      * @param string $departure
-     * @param BoardingCard $expected
+     * @param CardInterface $expected
      */
-    public function testFindByDeparture(InputCardsList $cardsList, string $departure, BoardingCard $expected) : void
+    public function testFindByDeparture(InputCardsList $cardsList, string $departure, CardInterface $expected) : void
     {
         $card = $cardsList->findByDeparture($departure);
         $this->assertEquals($card, $expected);

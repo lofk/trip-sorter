@@ -3,8 +3,11 @@ declare(strict_types=1);
 
 namespace TripSorter\Cards;
 
-
-abstract class BoardingCard implements CardInterface
+/**
+ * Class AbstractBoardingCard
+ * @package TripSorter\Cards
+ */
+abstract class AbstractBoardingCard implements CardInterface
 {
     /**
      * @var string
