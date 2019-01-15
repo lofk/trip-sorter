@@ -2,7 +2,7 @@
 
 TripSorter is an application that allows to sort a set of boarding cards, by finding where the journey starts, following by the coming trips.
 ## Description
-Full description [here](../blob/master/docs/Documentation.md)
+Full description [here](../master/docs/Documentation.md)
 ## Installation
 This application requires :
 - PHP 7.x
