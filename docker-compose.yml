@@ -4,7 +4,3 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    #volumes:
-    #  - ../trip_sorter:/var/www/html/trip_sorter
