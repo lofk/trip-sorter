@@ -60,4 +60,20 @@ final class FlightCard extends BoardingCard
     {
         return "From {$this->getDeparture()}, take flight {$this->getRefNumber()} to {$this->getArrival()}. Gate {$this->getGate()}, seat {$this->getSeat()}.";
     }
+
+    /**
+     * @return FlightBaggage
+     */
+    public function getBaggage()
+    {
+        return $this->baggage;
+    }
+
+    /**
+     * @param FlightBaggage $baggage
+     */
+    public function setBaggage($baggage)
+    {
+        $this->baggage = $baggage;
+    }
 }

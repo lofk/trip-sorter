@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace TripSorter;
 
 use TripSorter\CardsList\CardsListInterface;
-use TripSorter\CardsList\InputCardsList;
 use TripSorter\CardsList\ResultCardsList;
 
 /**
@@ -14,11 +13,11 @@ use TripSorter\CardsList\ResultCardsList;
 final class AppSorter implements SorterInterface
 {
     /**
-     * @param InputCardsList $cardsList
+     * @param CardsListInterface $cardsList
      * @return CardsListInterface
      * @throws Exception\BrokenChainException
      */
-    public function sort(InputCardsList $cardsList) : CardsListInterface
+    public function sort(CardsListInterface $cardsList) : CardsListInterface
     {
         $startPoint = $cardsList->getStartPoint();
         $result = new ResultCardsList();

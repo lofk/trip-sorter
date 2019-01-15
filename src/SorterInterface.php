@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace TripSorter;
 
 use TripSorter\CardsList\CardsListInterface;
-use TripSorter\CardsList\InputCardsList;
 
 /**
  * Interface SorterInterface
@@ -13,8 +12,8 @@ use TripSorter\CardsList\InputCardsList;
 interface SorterInterface
 {
     /**
-     * @param InputCardsList $cardsList
+     * @param CardsListInterface $cardsList
      * @return CardsListInterface
      */
-    public function sort(InputCardsList $cardsList) : CardsListInterface;
+    public function sort(CardsListInterface $cardsList) : CardsListInterface;
 }

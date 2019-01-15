@@ -2,28 +2,43 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+$list = [
+    [
+        'ref_number' => '78A',
+        'departure' => 'Madrid',
+        'arrival' => 'Barcelona',
+        'type' => \TripSorter\Cards\CardFactory::TRAIN_TYPE,
+        'seat' => '45B',
+    ],
+    [
+        'ref_number' => null,
+        'departure' => 'Barcelona',
+        'arrival' => 'Girona Airport',
+        'type' => \TripSorter\Cards\CardFactory::BUS_TYPE,
+        'seat' => null,
+    ],
+    [
+        'ref_number' => 'SK455',
+        'departure' => 'Girona Airport',
+        'arrival' => 'Stockholm',
+        'type' => \TripSorter\Cards\CardFactory::PLANE_TYPE,
+        'gate' => '45B',
+        'seat' => '3A',
+        'counter' => '344',
+    ],
+    [
+        'ref_number' => 'SK22',
+        'departure' => 'Stockholm',
+        'arrival' => 'New York JFK',
+        'type' => \TripSorter\Cards\CardFactory::PLANE_TYPE,
+        'gate' => '22',
+        'seat' => '7B',
+        'counter' => null,
+    ],
+];
+
 $sorter = new \TripSorter\AppSorter();
-$cardsList = new TripSorter\CardsList\InputCardsList();
-$trip1 = new \TripSorter\Cards\BusCard();
-$trip1->setRefNumber('bus1');
-$trip1->setDeparture('Paris');
-$trip1->setArrival('Bruxelles');
-$cardsList->addCard($trip1);
-
-$trip2 = new \TripSorter\Cards\TrainCard();
-$trip2->setRefNumber('train1');
-$trip2->setDeparture('Toulouse');
-$trip2->setArrival('Paris');
-$trip2->setSeat('TR123');
-$cardsList->addCard($trip2);
-
-$trip3 = new \TripSorter\Cards\FlightCard();
-$trip3->setRefNumber('bus1');
-$trip3->setDeparture('Bruxelles');
-$trip3->setArrival('London');
-$trip3->setGate('B32');
-$trip3->setSeat('J51');
-$cardsList->addCard($trip3);
-
+$transformer = new \TripSorter\DataTransformer\CardsListTransformer();
+$cardsList = $transformer->arrayToObject($list);
 $result = $sorter->sort($cardsList);
 echo $result->renderHtml();
