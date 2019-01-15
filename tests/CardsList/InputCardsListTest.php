@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace TripSorter\Tests;
 
 use PHPUnit\Framework\TestCase;
-use TripSorter\Cards\CardInterface;
 use TripSorter\CardsList\InputCardsList;
-use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
+use TripSorter\Cards\{CardInterface, BusCard, FlightCard, TrainCard};
 
 final class InputCardsListTest extends TestCase
 {

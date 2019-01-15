@@ -6,6 +6,7 @@ namespace TripSorter\Tests\DataTransformer;
 use PHPUnit\Framework\TestCase;
 use TripSorter\CardsList\{CardsListInterface, InputCardsList};
 use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
+use TripSorter\Cards\FlightBaggage;
 use TripSorter\DataTransformer\CardsListTransformer;
 
 class CardsListTransformerTest extends TestCase
@@ -46,6 +47,7 @@ class CardsListTransformerTest extends TestCase
                 'gate' => 'GATE A',
                 'seat' => '111',
                 'type' => 'plane',
+                'counter' => '3',
             ],
             [
                 'ref_number' => 'testtrain1',
@@ -67,6 +69,9 @@ class CardsListTransformerTest extends TestCase
         $trip2->setArrival('city D');
         $trip2->setGate('GATE A');
         $trip2->setSeat('111');
+        $baggage = new FlightBaggage();
+        $baggage->setCounter('3');
+        $trip2->setBaggage($baggage);
 
         $trip3 = new TrainCard();
         $trip3->setRefNumber('testtrain1');

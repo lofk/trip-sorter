@@ -5,9 +5,8 @@ namespace TripSorter\Tests;
 
 use PHPUnit\Framework\TestCase;
 use TripSorter\AppSorter;
-use TripSorter\CardsList\CardsListInterface;
 use TripSorter\Cards\{BusCard, FlightCard, TrainCard};
-use TripSorter\CardsList\{InputCardsList, ResultCardsList};
+use TripSorter\CardsList\{CardsListInterface, InputCardsList, ResultCardsList};
 use TripSorter\Exception\BrokenChainException;
 
 final class AppSorterTest extends TestCase
